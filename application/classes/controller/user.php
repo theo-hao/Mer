@@ -18,6 +18,9 @@ class Controller_User extends Controller
     public function action_index()
     {
         echo "User index";
+//        Config::load('application');
+        Config::load();
+        Config::get();
     }
 
     public function xxx_index()

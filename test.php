@@ -113,3 +113,5 @@
 //echo utf8_substr('这里是一段测试性文字', 2,3);
 //echo utf8_substr('This is a test string', 2, 3);
 //echo utf8_substr('This is 测试性文字', 1, 20);
+
+header("Location:http://www.baidu.com");

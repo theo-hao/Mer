@@ -23,4 +23,15 @@ class Url_Core
     {
 
     }
+
+    public static function redirect($url)
+    {
+        $url = (Str::start_with($url, 'http://') || Str::start_with($url, 'https://')) ? $url : 'http://' . $url;
+        static::set_header('Location', $url);
+    }
+
+    private static function set_header($key, $value)
+    {
+        header($key . ":" . $value);
+    }
 }

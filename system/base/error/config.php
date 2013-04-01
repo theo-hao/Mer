@@ -2,11 +2,9 @@
 /**
  * Created by JetBrains PhpStorm.
  * User: Pily_K
- * Date: 3/14/13
- * Time: 6:26 PM
+ * Date: 13-4-1
+ * Time: 下午10:22
  * To change this template use File | Settings | File Templates.
  */
 
-return array(
-    'test' => 'OK',
-);
+echo $error;

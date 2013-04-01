@@ -6,3 +6,12 @@
  * Time: 6:26 PM
  * To change this template use File | Settings | File Templates.
  */
+
+return array(
+    'mysql' => array(
+        'host' => 'localhost',
+        'user' => 'root',
+        'password' => '123456',
+        'encoding' => 'utf8'
+    ),
+);

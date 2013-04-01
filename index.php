@@ -17,11 +17,13 @@
     $module_path = $base_dir . "module" . DIR_SEPARATOR;
     $application_path = $base_dir . "application" . DIR_SEPARATOR;
     $system_path = $base_dir . "system" . DIR_SEPARATOR;
+    $config_path = $application_path . 'config' . DIR_SEPARATOR;
 
     define('BASE_DIR', $base_dir);
     define('MODULE_PATH', $module_path);
     define('APPLICATION_PATH', $application_path);
     define('SYSTEM_PATH', $system_path);
+    define('CONFIG_PATH', $config_path);
 
 
     include SYSTEM_PATH . "classes" . DIR_SEPARATOR . 'event' . DIR_SEPARATOR . 'core'.EXT;
@@ -54,17 +56,31 @@
         exit;
     });
 
+    Event::listen('System.Error.Config.Error', function($config_error){
+        $view = View::factory(SYSTEM_PATH . 'base' . DIR_SEPARATOR . 'error'. DIR_SEPARATOR . 'config');
+        $view->with('error','没有' . implode( $config_error));
+        echo $view->render();
+        exit;
+    });
+
     Event::listen('System.Error.Alias.No.Class', function($class_name){
         echo $class_name;
     });
 
     Event::listen('System.Error.No.Found.Class', function($class_name){
 //    var_dump($class_name);
+        var_dump($class_name);
+        exit;
     });
 
     Event::listen('System.Error.No.View', function($view){
         var_dump($view);
-        echo $view;
+        exit;
+    });
+
+    Event::listen('System.Error', function($param){
+        echo is_array($param) ? implode(',', $param) : $param;
+        exit;
     });
 
     include SYSTEM_PATH . "classes" . DIR_SEPARATOR . "core" . DIR_SEPARATOR . 'mer' . EXT ;
