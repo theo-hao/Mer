@@ -43,7 +43,6 @@ class Config_Core
                 if ( $file == '.' || $file == '..')
                     continue;
                 $file_dir = CONFIG_PATH . $file;
-                echo $file_dir;
                 $file_key = pathinfo($file_dir, PATHINFO_FILENAME);
                 static::$configs[strtoupper($file_key)] = include $file_dir;
             }
@@ -57,10 +56,13 @@ class Config_Core
         {
             return static::$configs;
         }
-
+        if ( !static::$configs)
+        {
+            static::load();
+        }
         if (array_key_exists(strtoupper($key), static::$configs))
         {
-            return static::$configs[$key];
+            return static::$configs[strtoupper($key)];
         }
 
         return NULL;

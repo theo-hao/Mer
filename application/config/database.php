@@ -8,10 +8,17 @@
  */
 
 return array(
-    'mysql' => array(
-        'host' => 'localhost',
-        'user' => 'root',
-        'password' => '123456',
-        'encoding' => 'utf8'
+    'default' => array(
+        'type' => 'mysql',
+        'connection' => array(
+            'hostname' => 'localhost',
+            'user' => 'root',
+            'password' => '123456',
+            'database' => 'blogs',
+        ),
+        'charset' => 'utf8',
+        'table_prefix' => '',
+        'profiling' => TRUE,
+        'caching' => false,
     ),
 );

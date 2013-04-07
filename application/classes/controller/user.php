@@ -20,7 +20,7 @@ class Controller_User extends Controller
         echo "User index";
 //        Config::load('application');
         Config::load();
-        Config::get();
+        var_dump(Config::get());
     }
 
     public function xxx_index()
@@ -30,12 +30,15 @@ class Controller_User extends Controller
 
     public function do_index()
     {
-        echo "user_do_index";
+        $d = DB::select()->from('users')->execute()->to_array();
+        var_dump($d);
+        $db = DB::query('SHOW COLUMNS FROM users')->to_array();
+        var_dump($db);
+        echo DB::last_query();
     }
 
     public function html_index()
     {
-        //echo "user_html_index";
         $template = View::factory('user');
         $user = new Model_User();
         $user->name = 'Kevin';

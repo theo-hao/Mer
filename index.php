@@ -96,6 +96,7 @@
     $class_loader_directory = array(
         APPLICATION_PATH . 'classes' . DIR_SEPARATOR,
         SYSTEM_PATH . 'classes' . DIR_SEPARATOR,
+        MODULE_PATH,
     );
 
     Core_Mer::loader($class_alias, $class_loader_directory);

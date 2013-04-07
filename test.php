@@ -114,4 +114,31 @@
 //echo utf8_substr('This is a test string', 2, 3);
 //echo utf8_substr('This is 测试性文字', 1, 20);
 
-header("Location:http://www.baidu.com");
+//header("Location:http://www.baidu.com");
+$conn = mysql_connect('localhost', 'root', '123456') or die('Do not connection');
+if (is_resource($conn))
+{
+    mysql_select_db('blogs', $conn);
+    mysql_set_charset('utf8', $conn);
+    $sql = "SELECT * FROM users";
+    $result = mysql_query($sql, $conn);
+//    var_dump($result);
+//    $o = mysql_fetch_object($result);
+//    var_dump($o);
+    while($a = mysql_fetch_object($result))
+    {
+        var_dump($a);
+        echo $a->name;
+    }
+//    $a = mysql_fetch_assoc($result);
+//    var_dump($a);
+//    $f = mysql_fetch_field($result);
+//    var_dump($f);
+//    $r = mysql_fetch_array($result);
+//    var_dump($r);
+//    $l = mysql_fetch_lengths($result);
+//    var_dump($l);
+//    $row = mysql_fetch_row($result);
+//    var_dump($row);
+//    mysql_close($conn);
+}

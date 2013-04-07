@@ -8,8 +8,23 @@
  */
 class Database_Core
 {
+    protected $sql;
+    protected $flag;
+    protected $sentence;
+
     private function __construct($database = NULL)
     {
 
+    }
+
+
+
+    public function __toString()
+    {
+        if ($this->flag)
+        {
+            return $this->flag;
+        }
+        return null;
     }
 }
